@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react"
 import axios from "axios"
+import {useNavigate} from "react-router-dom"
+import useAuth from "./hooks/useAuth"
 
 const Profile = () => {
-    const [user_id, setUserId] = useState()
-    const [nickName, setNickName] = useState()
-    const [email, setEmail] = useState()
+    const [userName, setUserName] = useState("")
 
     const backendUrl = process.env.REACT_APP_BACK_API_URL
+    const navigate = useNavigate()
 
     const profile = () => {
         return window.Kakao.API.request({
@@ -14,22 +15,29 @@ const Profile = () => {
         })
     }
 
+    const { login } = useAuth()
+
     const getToken = () => {
         profile().then(data => {
-            axios.post(
-                backendUrl + "/session/login",
-                {
-                    "email": data.kakao_account.email,
-                    "name": data.properties.nickname
-                },
-                {
-                    withCredentials: true
-                }
-            ).then(() => {
-                setUserId(data.id)
-                setNickName(data.properties.nickname)
-                setEmail(data.kakao_account.email)
+            login({
+                "email": data.kakao_account.email,
+                "name": data.properties.nickname
+            }).then(r => {
+                console.log(r)
             })
+            // axios.post(
+            //     backendUrl + "/session/login",
+            //     {
+            //         "email": data.kakao_account.email,
+            //         "name": data.properties.nickname
+            //     },
+            //     {
+            //         withCredentials: true
+            //     }
+            // ).then((res) => {
+            //     axios.defaults.headers.common["Authorization"] = `Bearer ${res.data}`
+            //     navigate("/")
+            // })
         })
 
     }
@@ -39,13 +47,7 @@ const Profile = () => {
     }, [])
 
 
-    return (
-        <div>
-            <h2>{user_id}</h2>
-            <h2>{nickName}</h2>
-            <h2>{email}</h2>
-        </div>
-    )
+    return null
 }
 
 export default Profile
