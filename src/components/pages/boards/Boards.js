@@ -18,25 +18,31 @@ const Boards = () => {
         , []
     )
 
-    console.log(data)
-
     return (
         <div>
             <h1>BOARD</h1>
             {data ? (
-                <ul>
-                    {data.data.content.map(({id, title, content}) => (
-                        <li key={id}>
-                            <Link
-                                to={{
-                                    pathname: PATH.BOARD_DETAIL,
-                                    search: generateQuery({boardId: id})
-                                }}>
-                                {id} {title}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                <div>
+                    <Link
+                        to={{
+                            pathname: PATH.BOARD_REGISTER
+                        }}>
+                        글쓰기
+                    </Link>
+                    <ul>
+                        {data.data.content.map(({id, title, content}) => (
+                            <li key={id}>
+                                <Link
+                                    to={{
+                                        pathname: PATH.BOARD_DETAIL,
+                                        search: generateQuery({boardId: id})
+                                    }}>
+                                    {id} {title}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             ) : (
                 <div>
 

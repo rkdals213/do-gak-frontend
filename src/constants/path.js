@@ -1,7 +1,8 @@
 const PATH = {
     HOME: "/",
     BOARD: "/board",
-    BOARD_DETAIL: "/boardDetail"
+    BOARD_DETAIL: "/boardDetail",
+    BOARD_REGISTER: "/boardRegister"
 }
 
 const AUTH_PATH = {
