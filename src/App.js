@@ -1,7 +1,13 @@
 import './App.css';
 import Header from "./components/header/Header"
-import TokenProvider from "./components/provider/TokenProvider"
-import {BrowserRouter} from "react-router-dom"
+import TokenProvider from "./provider/TokenProvider"
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import {PATH, AUTH_PATH} from "./constants/path"
+import Boards from "./components/pages/boards/Boards"
+import BoardDetail from "./components/pages/boards/BoardDetail"
+import Auth from "./components/header/Auth"
+import Profile from "./components/header/Profile"
+import React from "react"
 
 function App() {
 
@@ -9,13 +15,27 @@ function App() {
         <div>
             <TokenProvider>
                 <BrowserRouter>
-                    <Header>
-
-                    </Header>
+                    <Header/>
+                    <main className={"main"}>
+                        <Routes>
+                            <Route path={AUTH_PATH.CALLBACK} element={
+                                <Auth/>
+                            }/>
+                            <Route path={AUTH_PATH.PROFILE} element={
+                                <Profile/>
+                            }/>
+                            <Route path={PATH.HOME} element={
+                                <Boards/>
+                            }/>
+                            <Route path={PATH.BOARD_DETAIL} element={
+                                <BoardDetail/>
+                            }/>
+                        </Routes>
+                    </main>
                 </BrowserRouter>
             </TokenProvider>
         </div>
-    );
+    )
 }
 
-export default App;
+export default App
