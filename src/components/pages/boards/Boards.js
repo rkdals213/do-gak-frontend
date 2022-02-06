@@ -2,6 +2,7 @@ import * as Api from "../../../api"
 import {useEffect, useState} from "react"
 import {Link} from "react-router-dom"
 import {generateQuery} from "../../../utils/query"
+import {PATH} from "../../../constants/path"
 
 const Boards = () => {
     const [data, setData] = useState()
@@ -26,13 +27,12 @@ const Boards = () => {
                 <ul>
                     {data.data.content.map(({id, title, content}) => (
                         <li key={id}>
-                            {title}
                             <Link
                                 to={{
-                                    pathname: "/boardDetail",
+                                    pathname: PATH.BOARD_DETAIL,
                                     search: generateQuery({boardId: id})
                                 }}>
-                                {id}
+                                {id} {title}
                             </Link>
                         </li>
                     ))}

@@ -8,6 +8,7 @@ import BoardDetail from "./components/pages/boards/BoardDetail"
 import Auth from "./components/header/Auth"
 import Profile from "./components/header/Profile"
 import React from "react"
+import ScrollToTop from "./components/scroll-to-top/ScrollToTop"
 
 function App() {
 
@@ -17,20 +18,25 @@ function App() {
                 <BrowserRouter>
                     <Header/>
                     <main className={"main"}>
-                        <Routes>
-                            <Route path={AUTH_PATH.CALLBACK} element={
-                                <Auth/>
-                            }/>
-                            <Route path={AUTH_PATH.PROFILE} element={
-                                <Profile/>
-                            }/>
-                            <Route path={PATH.HOME} element={
-                                <Boards/>
-                            }/>
-                            <Route path={PATH.BOARD_DETAIL} element={
-                                <BoardDetail/>
-                            }/>
-                        </Routes>
+                        <ScrollToTop>
+                            <Routes>
+                                <Route path={AUTH_PATH.CALLBACK} element={
+                                    <Auth/>
+                                }/>
+                                <Route path={AUTH_PATH.PROFILE} element={
+                                    <Profile/>
+                                }/>
+                                <Route path={PATH.HOME} element={
+                                    <Boards/>
+                                }/>
+                                <Route path={PATH.BOARD} element={
+                                    <Boards/>
+                                }/>
+                                <Route path={PATH.BOARD_DETAIL} element={
+                                    <BoardDetail/>
+                                }/>
+                            </Routes>
+                        </ScrollToTop>
                     </main>
                 </BrowserRouter>
             </TokenProvider>
