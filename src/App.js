@@ -10,6 +10,7 @@ import Profile from "./components/header/Profile"
 import React from "react"
 import ScrollToTop from "./components/scroll-to-top/ScrollToTop"
 import RegisterBoard from "./components/pages/boards/RegisterBoard"
+import UpdateBoard from "./components/pages/boards/UpdateBoard"
 
 function App() {
 
@@ -38,6 +39,9 @@ function App() {
                                 }/>
                                 <Route path={PATH.BOARD_REGISTER} element={
                                     <RegisterBoard/>
+                                }/>
+                                <Route path={PATH.BOARD_UPDATE} element={
+                                    <UpdateBoard/>
                                 }/>
                             </Routes>
                         </ScrollToTop>

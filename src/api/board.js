@@ -12,3 +12,6 @@ export const fetchBoardDetail = (boardId) =>
 
 export const registerBoard = (token, boardData) =>
     axios.post(`${COMMON_PATH}`, boardData, headers({token}))
+
+export const updateBoard = (token, boardId, boardData) =>
+    axios.put(`${COMMON_PATH}/boardId/${boardId}`, boardData, headers({token}))

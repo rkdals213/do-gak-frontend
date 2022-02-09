@@ -1,7 +1,5 @@
 import React, {useState} from "react"
-import {Route, Routes, useNavigate} from "react-router-dom"
-import Auth from "./Auth"
-import Profile from "./Profile"
+import {useNavigate} from "react-router-dom"
 import useTokenContext from "../../hooks/useTokenContext"
 import {PATH, URL} from "../../constants/path"
 
@@ -18,9 +16,9 @@ const Header = () => {
 
     const onLogout = () => {
         setIsShowMemberMenu(false)
-        resetToken();
-        navigate(PATH.HOME);
-    };
+        resetToken()
+        navigate(PATH.HOME)
+    }
 
     return (
         <div>
