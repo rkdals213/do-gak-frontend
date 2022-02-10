@@ -14,10 +14,9 @@ const RegisterBoard = () => {
     const query = new URLSearchParams(useLocation().search)
     const boardId = query.get("boardId")
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const getBoardDetail = async () => {
-        const response = await Api.fetchBoardDetail(boardId)
-        const flatData = {
+
+    const flatBoardForm = (response) => {
+        return {
             id: response.data.id,
             title: response.data.title,
             content: response.data.content,
@@ -26,8 +25,13 @@ const RegisterBoard = () => {
             purchaseYear: response.data.productInfo.purchaseTime.year,
             purchaseMonth: response.data.productInfo.purchaseTime.month
         }
+    }
 
-        console.log(flatData)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const getBoardDetail = async () => {
+        const response = await Api.fetchBoardDetail(boardId)
+
+        const flatData = flatBoardForm(response)
 
         setBoardForm(flatData)
     }
