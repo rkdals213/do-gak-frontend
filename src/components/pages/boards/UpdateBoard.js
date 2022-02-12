@@ -1,4 +1,4 @@
-import useRegisterBoardForm, {REGISTER_BOARD_FORM} from "../../../hooks/useRegisterBoardForm"
+import useRegisterBoardForm, {REGISTER_BOARD_FORM, REGISTER_PRODUCT_FORM, REGISTER_PURCHASE_TIME} from "../../../hooks/useRegisterBoardForm"
 import * as Api from "../../../api"
 import useTokenContext from "../../../hooks/useTokenContext"
 import {useLocation, useNavigate} from "react-router-dom"
@@ -14,26 +14,11 @@ const RegisterBoard = () => {
     const query = new URLSearchParams(useLocation().search)
     const boardId = query.get("boardId")
 
-
-    const flatBoardForm = (response) => {
-        return {
-            id: response.data.id,
-            title: response.data.title,
-            content: response.data.content,
-            productName: response.data.productInfo.name,
-            productPrice: response.data.productInfo.price,
-            purchaseYear: response.data.productInfo.purchaseTime.year,
-            purchaseMonth: response.data.productInfo.purchaseTime.month
-        }
-    }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const getBoardDetail = async () => {
         const response = await Api.fetchBoardDetail(boardId)
 
-        const flatData = flatBoardForm(response)
-
-        setBoardForm(flatData)
+        setBoardForm(response.data)
     }
 
     const updateBoard = async (form) => {
@@ -79,24 +64,24 @@ const RegisterBoard = () => {
                 /><br/>
                 <input
                     type={"text"}
-                    value={boardForm.productName}
+                    value={boardForm.productInfo.name}
                     placeholder={"상품이름을 입력하세요"}
-                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO_REQUEST.NAME]}
+                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO][REGISTER_PRODUCT_FORM.NAME]}
                 /><br/>
                 <input
                     type={"number"}
-                    value={boardForm.productPrice}
-                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO_REQUEST.PRICE]}
+                    value={boardForm.productInfo.price}
+                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO][REGISTER_PRODUCT_FORM.PRICE]}
                 /><br/>
                 <input
                     type={"number"}
-                    value={boardForm.purchaseYear}
-                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO_REQUEST.PURCHASE_TIME.YEAR]}
+                    value={boardForm.productInfo.purchaseTime.year}
+                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO][REGISTER_PRODUCT_FORM.PURCHASE_TIME][REGISTER_PURCHASE_TIME.YEAR]}
                 /><br/>
                 <input
                     type={"text"}
-                    value={boardForm.purchaseMonth}
-                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO_REQUEST.PURCHASE_TIME.MONTH]}
+                    value={boardForm.productInfo.purchaseTime.month}
+                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO][REGISTER_PRODUCT_FORM.PURCHASE_TIME][REGISTER_PURCHASE_TIME.MONTH]}
                 /><br/>
                 <button type={"submit"}>제출</button>
             </form>

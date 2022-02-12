@@ -1,4 +1,4 @@
-import useRegisterBoardForm, {REGISTER_BOARD_FORM} from "../../../hooks/useRegisterBoardForm"
+import useRegisterBoardForm, {REGISTER_BOARD_FORM, REGISTER_PRODUCT_FORM, REGISTER_PURCHASE_TIME} from "../../../hooks/useRegisterBoardForm"
 import * as Api from "../../../api"
 import useTokenContext from "../../../hooks/useTokenContext"
 import {useNavigate} from "react-router-dom"
@@ -48,24 +48,24 @@ const RegisterBoard = () => {
                 /><br/>
                 <input
                     type={"text"}
-                    value={boardForm.productName}
+                    value={boardForm.productInfo.name}
                     placeholder={"상품이름을 입력하세요"}
-                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO_REQUEST.NAME]}
+                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO][REGISTER_PRODUCT_FORM.NAME]}
                 /><br/>
                 <input
                     type={"number"}
-                    value={boardForm.productPrice}
-                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO_REQUEST.PRICE]}
+                    value={boardForm.productInfo.price}
+                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO][REGISTER_PRODUCT_FORM.PRICE]}
                 /><br/>
                 <input
                     type={"number"}
-                    value={boardForm.purchaseYear}
-                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO_REQUEST.PURCHASE_TIME.YEAR]}
+                    value={boardForm.productInfo.purchaseTime.year}
+                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO][REGISTER_PRODUCT_FORM.PURCHASE_TIME][REGISTER_PURCHASE_TIME.YEAR]}
                 /><br/>
                 <input
                     type={"text"}
-                    value={boardForm.purchaseMonth}
-                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO_REQUEST.PURCHASE_TIME.MONTH]}
+                    value={boardForm.productInfo.purchaseTime.month}
+                    onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO][REGISTER_PRODUCT_FORM.PURCHASE_TIME][REGISTER_PURCHASE_TIME.MONTH]}
                 /><br/>
                 <button type={"submit"}>제출</button>
             </form>
