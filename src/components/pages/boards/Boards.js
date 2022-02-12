@@ -44,9 +44,7 @@ const Boards = () => {
                     </ul>
                 </div>
             ) : (
-                <div>
-
-                </div>
+                <div/>
             )}
         </div>
     )

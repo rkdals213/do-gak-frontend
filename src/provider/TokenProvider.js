@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import * as Api from "../api";
 import {LOCAL_STORAGE_KEY} from "../constants/key";
 import {TokenContext} from "../hooks/useTokenContext";
 
