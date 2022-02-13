@@ -1,0 +1,4 @@
+.button {
+    min-width: 6rem;
+    background-color: var(--sky);
+}

@@ -17,9 +17,8 @@ const Boards = () => {
         setLoading(true)
         const response = await Api.fetchBoard(page)
         const content = response.data.content
-        const mergedContent = boards.concat(...content)
 
-        setBoards(mergedContent)
+        setBoards(prevState => prevState.concat(content))
         setIsLastPage(response.data.last)
         setLoading(false)
     }
@@ -30,37 +29,33 @@ const Boards = () => {
         if (inView && !loading && !isLastPage) {
             setPage(prevState => prevState + 1)
         }
-    }, [inView, loading])
+    }, [inView, isLastPage, loading])
 
     return (
         <div>
             <h1>BOARD</h1>
-            {boards ? (
-                <div>
-                    <Link
-                        to={{
-                            pathname: PATH.BOARD_REGISTER
-                        }}>
-                        글쓰기
-                    </Link>
-                    <ul>
-                        {boards.map(({id, title}) => (
-                            <li key={id}>
-                                <Link
-                                    to={{
-                                        pathname: PATH.BOARD_DETAIL,
-                                        search: generateQuery({boardId: id})
-                                    }}>
-                                    {id} {title}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                    <div ref={ref}/>
-                </div>
-            ) : (
+            <div>
+                <Link
+                    to={{
+                        pathname: PATH.BOARD_REGISTER
+                    }}>
+                    글쓰기
+                </Link>
+                <ul>
+                    {boards.map(({id, title}) => (
+                        <li key={id}>
+                            <Link
+                                to={{
+                                    pathname: PATH.BOARD_DETAIL,
+                                    search: generateQuery({boardId: id})
+                                }}>
+                                {id} {title}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
                 <div ref={ref}/>
-            )}
+            </div>
         </div>
     )
 }

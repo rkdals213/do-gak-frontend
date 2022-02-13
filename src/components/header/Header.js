@@ -2,6 +2,8 @@ import React, {useState} from "react"
 import {useNavigate} from "react-router-dom"
 import useTokenContext from "../../hooks/useTokenContext"
 import {PATH, URL} from "../../constants/path"
+import Button from "../@common/Button"
+import styles from "./Header.module.css"
 
 const Header = () => {
     const {token, resetToken} = useTokenContext()
@@ -25,11 +27,11 @@ const Header = () => {
             {token ? (
                 <div className="App">
                     <h1>{token}</h1>
-                    <button onClick={onLogout}>Logout</button>
+                    <Button className={styles.button} onClick={onLogout}>Logout</Button>
                 </div>
             ) : (
                 <div className="App">
-                    <button onClick={onLogin}>Login</button>
+                    <Button className={styles.button} onClick={onLogin}>Login</Button>
                 </div>
             )}
         </div>
