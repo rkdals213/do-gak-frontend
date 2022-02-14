@@ -5,8 +5,8 @@ import {BrowserRouter, Route, Routes} from "react-router-dom"
 import {AUTH_PATH, PATH} from "./constants/path"
 import Boards from "./components/pages/boards/Boards"
 import BoardDetail from "./components/pages/boards/BoardDetail"
-import Auth from "./components/header/Auth"
-import Profile from "./components/header/Profile"
+import KakaoCallback from "./components/header/KakaoCallback"
+import LoginCallback from "./components/header/LoginCallback"
 import React from "react"
 import ScrollToTop from "./components/scroll-to-top/ScrollToTop"
 import RegisterBoard from "./components/pages/boards/RegisterBoard"
@@ -23,11 +23,11 @@ function App() {
                     <main className={"main"}>
                         <ScrollToTop>
                             <Routes>
-                                <Route path={AUTH_PATH.CALLBACK} element={
-                                    <Auth/>
+                                <Route path={AUTH_PATH.KAKAO_CALLBACK} element={
+                                    <KakaoCallback/>
                                 }/>
-                                <Route path={AUTH_PATH.PROFILE} element={
-                                    <Profile/>
+                                <Route path={AUTH_PATH.LOGIN_CALLBACK} element={
+                                    <LoginCallback/>
                                 }/>
                                 <Route path={PATH.HOME} element={
                                     <Boards/>

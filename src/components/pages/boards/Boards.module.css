@@ -2,19 +2,6 @@
     margin-bottom: 5.75rem;
 }
 
-.header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 5.75rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--white);
-    border-bottom: 1px solid var(--gray-003);
-    z-index: var(--header-z-index);
-}
-
 .content {
     width: var(--pc-main-width);
     display: flex;
@@ -23,10 +10,6 @@
 
 .button {
     min-width: 6rem;
-}
-
-.member-menu-container {
-    position: relative;
 }
 
 .logo {

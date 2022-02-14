@@ -3,8 +3,9 @@ import {useEffect} from "react"
 import axios from "axios"
 import qs from "qs"
 import {useNavigate} from "react-router-dom"
+import {AUTH_PATH} from "../../constants/path"
 
-const Auth = () => {
+const KakaoCallback = () => {
     const REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY
     const REDIRECT_URI = process.env.REACT_APP_KAKAO_REDIRECT_URI
     const CLIENT_SECRET = process.env.REACT_APP_KAKAO_CLIENT_SECRET
@@ -30,7 +31,7 @@ const Auth = () => {
 
             window.Kakao.init(REST_API_KEY)
             window.Kakao.Auth.setAccessToken(res.data.access_token)
-            navigate("/profile")
+            navigate(AUTH_PATH.LOGIN_CALLBACK)
         } catch (err) {
             console.log(err)
         }
@@ -43,4 +44,4 @@ const Auth = () => {
     return null
 }
 
-export default Auth
+export default KakaoCallback

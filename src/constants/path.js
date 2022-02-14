@@ -7,8 +7,8 @@ const PATH = {
 }
 
 const AUTH_PATH = {
-    CALLBACK: "/oauth/kakao/callback",
-    PROFILE: "profile"
+    KAKAO_CALLBACK: "/oauth/kakao/callback",
+    LOGIN_CALLBACK: "/login-callback"
 }
 
 const URL = {

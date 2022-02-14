@@ -4,6 +4,7 @@ import {Link} from "react-router-dom"
 import {generateQuery} from "../../../utils/query"
 import {PATH} from "../../../constants/path"
 import {useInView} from "react-intersection-observer"
+import styles from "./Boards.module.css"
 
 const Boards = () => {
     const [boards, setBoards] = useState([])
@@ -32,31 +33,32 @@ const Boards = () => {
     }, [inView, isLastPage, loading])
 
     return (
-        <div>
-            <h1>BOARD</h1>
-            <div>
+        <>
+            <div className={styles.content}>
                 <Link
                     to={{
                         pathname: PATH.BOARD_REGISTER
                     }}>
                     글쓰기
                 </Link>
-                <ul>
-                    {boards.map(({id, title}) => (
-                        <li key={id}>
-                            <Link
-                                to={{
-                                    pathname: PATH.BOARD_DETAIL,
-                                    search: generateQuery({boardId: id})
-                                }}>
-                                {id} {title}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-                <div ref={ref}/>
+                <div>
+                    <ul>
+                        {boards.map(({id, title}) => (
+                            <li key={id}>
+                                <Link
+                                    to={{
+                                        pathname: PATH.BOARD_DETAIL,
+                                        search: generateQuery({boardId: id})
+                                    }}>
+                                    {id} {title}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
-        </div>
+            <div ref={ref}/>
+        </>
     )
 }
 

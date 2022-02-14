@@ -2,7 +2,7 @@ import React, {useEffect} from "react"
 import {useNavigate} from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 
-const Profile = () => {
+const LoginCallback = () => {
 
     const navigate = useNavigate()
 
@@ -32,4 +32,4 @@ const Profile = () => {
     return null
 }
 
-export default Profile
+export default LoginCallback
