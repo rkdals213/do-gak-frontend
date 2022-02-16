@@ -4,11 +4,12 @@ import {headers} from "./api"
 const backendUrl = process.env.REACT_APP_BACK_API_URL
 const COMMON_PATH = backendUrl + "/board"
 
-export const fetchBoard = (page) =>
+export const fetchBoard = (page, category) =>
     axios.get(`${COMMON_PATH}`, {
         params: {
             size: 5,
-            page: page
+            page: page,
+            category: category
         }
     })
 
