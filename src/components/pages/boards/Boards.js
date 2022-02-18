@@ -1,12 +1,13 @@
 import * as Api from "../../../api"
 import {useEffect, useState} from "react"
-import {Link, useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import {generateQuery} from "../../../utils/query"
 import {PATH} from "../../../constants/path"
 import {useInView} from "react-intersection-observer"
 import styles from "./Boards.module.css"
 import {BOARD_CATEGORY_TAB, BOARD_CATEGORY_TAB_LIST} from "../../../constants/board"
 import classNames from "classnames"
+import BoardItem from "./BoardItem"
 
 const Boards = () => {
     const [boards, setBoards] = useState([])
@@ -37,6 +38,19 @@ const Boards = () => {
         }
     }, [inView, isLastPage, loading])
 
+    const refreshCategory = (name) => {
+        setBoardCategory(name)
+        setBoards([])
+        setPage(0)
+    }
+
+    const goToBoardDetail = (board) => {
+        navigate({
+            pathname: PATH.BOARD_DETAIL,
+            search: generateQuery({boardId: board.id})
+        })
+    }
+
     return (
         <>
             <nav className={styles.tab}>
@@ -46,9 +60,7 @@ const Boards = () => {
                             key={name}
                             className={classNames(styles["tab-item"])}
                             onClick={() => {
-                                setBoardCategory(name)
-                                setBoards([])
-                                setPage(0)
+                                refreshCategory(name)
                             }}
                         >
                             {label}
@@ -63,21 +75,17 @@ const Boards = () => {
                     </li>
                 </ul>
             </nav>
-            <div className={styles.content}>
-                <div>
-                    <ul>
-                        {boards.map(({id, title}) => (
-                            <li key={id}>
-                                <Link
-                                    to={{
-                                        pathname: PATH.BOARD_DETAIL,
-                                        search: generateQuery({boardId: id})
-                                    }}>
-                                    {id} {title}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+            <div className={styles["board-list-box"]}>
+                <div className={styles["board-list"]}>
+                    {boards.map((board) => (
+                        <BoardItem
+                            key={board.id}
+                            board={board}
+                            onClickButton={() => {
+                                goToBoardDetail(board)
+                            }}
+                        />
+                    ))}
                 </div>
             </div>
             <div ref={ref}/>

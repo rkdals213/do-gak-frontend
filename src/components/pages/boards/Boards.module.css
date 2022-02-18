@@ -57,3 +57,14 @@
     height: inherit;
     flex: 1;
 }
+
+.board-list-box {
+    width: var(--pc-main-width);
+    margin: 10rem auto 0;
+}
+
+.board-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+}
