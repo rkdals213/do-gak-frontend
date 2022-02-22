@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 import {Link, useNavigate} from "react-router-dom"
 import useTokenContext from "../../hooks/useTokenContext"
 import {PATH, URL} from "../../constants/path"
@@ -24,16 +24,18 @@ const Header = () => {
         <div className={styles.box}>
             <header className={styles.header}>
                 <div className={styles.content}>
-                    <h1>
-                        <Link to={PATH.HOME}>
-                            <img
-                                className={styles.logo}
-                                src={headerLogo}
-                                height={30}
-                                alt={"로고"}/>
-                            도각도각
-                        </Link>
-                    </h1>
+                    <div className={styles.home}>
+                        <h1>
+                            <Link to={PATH.HOME}>
+                                <img
+                                    className={styles.logo}
+                                    src={headerLogo}
+                                    height={30}
+                                    alt={"로고"}/>
+                                도각도각
+                            </Link>
+                        </h1>
+                    </div>
                     <div className={styles["link-container"]}>
                         {token ? (
                             <div className={styles["member-menu-container"]}>
