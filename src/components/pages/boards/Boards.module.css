@@ -1,5 +1,9 @@
 .box {
     margin-bottom: 5.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 .content {

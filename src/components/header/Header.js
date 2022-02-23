@@ -2,7 +2,7 @@ import React from "react"
 import {Link, useNavigate} from "react-router-dom"
 import useTokenContext from "../../hooks/useTokenContext"
 import {PATH, URL} from "../../constants/path"
-import Button from "../@common/Button"
+import Button from "../@common/button/Button"
 import styles from "./Header.module.css"
 import headerLogo from "../../assets/Header.jpeg"
 
@@ -21,7 +21,7 @@ const Header = () => {
     }
 
     return (
-        <div className={styles.box}>
+        <div className={styles.content}>
             <header className={styles.header}>
                 <div className={styles.content}>
                     <div className={styles.home}>

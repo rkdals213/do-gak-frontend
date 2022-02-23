@@ -1,0 +1,54 @@
+.box {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: var(--pc-main-width);
+    margin: 7rem auto 0;
+}
+
+.label-bold label {
+    font-weight: bold;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-field-container {
+    margin-bottom: 30px;
+}
+
+.autosave-indicator {
+    color: var(--blue);
+    margin-bottom: 1.5rem;
+}
+
+.description-url {
+    font-size: 1rem;
+    color: var(--gray-009);
+}
+
+.description-url-small {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--gray-008);
+}
+
+.box-agree {
+    margin: 1rem 0;
+}
+
+.description-agree {
+    margin-top: 0.5rem;
+    margin-bottom: 0.875rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 64px;
+}
+
+.buttons button {
+    flex: 1;
+}

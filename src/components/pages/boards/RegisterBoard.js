@@ -4,6 +4,9 @@ import useTokenContext from "../../../hooks/useTokenContext"
 import {useNavigate} from "react-router-dom"
 import {PATH} from "../../../constants/path"
 import {generateQuery} from "../../../utils/query"
+import MessageTextInput from "../../@common/MessageTextInput/MessageTextInput"
+import styles from "./BoardForms.module.css"
+import MessageTextarea from "../../@common/MessageTextarea/MessageTextarea"
 
 const RegisterBoard = () => {
     const {token} = useTokenContext()
@@ -32,37 +35,43 @@ const RegisterBoard = () => {
     }
 
     return (
-        <div>
+        <div className={styles.box}>
             <form onSubmit={handleSubmit}>
-                <input
-                    type={"text"}
+                <MessageTextInput
+                    name="title"
+                    type="text"
                     value={boardForm.title}
-                    placeholder={"제목을 입력하세요"}
                     onChange={handleChanges[REGISTER_BOARD_FORM.TITLE]}
+                    placeholder={"제목을 입력하세요"}
                 /><br/>
-                <input
+                <MessageTextarea
+                    name="content"
                     type={"text"}
                     value={boardForm.content}
                     placeholder={"본문을 입력하세요"}
                     onChange={handleChanges[REGISTER_BOARD_FORM.CONTENT]}
                 /><br/>
-                <input
+                <MessageTextInput
+                    name="product-name"
                     type={"text"}
                     value={boardForm.productInfo.name}
                     placeholder={"상품이름을 입력하세요"}
                     onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO][REGISTER_PRODUCT_FORM.NAME]}
                 /><br/>
-                <input
+                <MessageTextInput
+                    name="product-price"
                     type={"number"}
                     value={boardForm.productInfo.price}
                     onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO][REGISTER_PRODUCT_FORM.PRICE]}
                 /><br/>
-                <input
+                <MessageTextInput
+                    name="purchase-year"
                     type={"number"}
                     value={boardForm.productInfo.purchaseTime.year}
                     onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO][REGISTER_PRODUCT_FORM.PURCHASE_TIME][REGISTER_PURCHASE_TIME.YEAR]}
                 /><br/>
-                <input
+                <MessageTextInput
+                    name="purchase-month"
                     type={"text"}
                     value={boardForm.productInfo.purchaseTime.month}
                     onChange={handleChanges[REGISTER_BOARD_FORM.PRODUCT_INFO][REGISTER_PRODUCT_FORM.PURCHASE_TIME][REGISTER_PURCHASE_TIME.MONTH]}
