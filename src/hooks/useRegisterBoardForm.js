@@ -2,6 +2,7 @@ import {useState} from "react"
 
 export const REGISTER_BOARD_FORM = {
     TITLE: "title",
+    CATEGORY: "category",
     CONTENT: "content",
     PRODUCT_INFO: "productInfo"
 }
@@ -20,6 +21,7 @@ export const REGISTER_PURCHASE_TIME = {
 const useRegisterBoardForm = () => {
     const [boardForm, setBoardForm] = useState({
         [REGISTER_BOARD_FORM.TITLE]: "",
+        [REGISTER_BOARD_FORM.CATEGORY]: "",
         [REGISTER_BOARD_FORM.CONTENT]: "",
         [REGISTER_BOARD_FORM.PRODUCT_INFO]: {
             [REGISTER_PRODUCT_FORM.NAME]: "",
@@ -35,6 +37,13 @@ const useRegisterBoardForm = () => {
         setBoardForm((prev) => ({
             ...prev,
             [REGISTER_BOARD_FORM.TITLE]: target.value,
+        }))
+    }
+
+    const handleCategoryChange = ({target}) => {
+        setBoardForm((prev) => ({
+            ...prev,
+            [REGISTER_BOARD_FORM.CATEGORY]: target.value,
         }))
     }
 
@@ -96,6 +105,7 @@ const useRegisterBoardForm = () => {
         setBoardForm,
         handleChanges: {
             [REGISTER_BOARD_FORM.TITLE]: handleTitleChange,
+            [REGISTER_BOARD_FORM.CATEGORY]: handleCategoryChange,
             [REGISTER_BOARD_FORM.CONTENT]: handleContentChange,
             [REGISTER_BOARD_FORM.PRODUCT_INFO]: {
                 [REGISTER_PRODUCT_FORM.NAME]: handleProductNameChange,

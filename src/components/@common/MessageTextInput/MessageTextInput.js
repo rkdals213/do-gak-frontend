@@ -1,6 +1,6 @@
-import classNames from "classnames";
-import PropTypes from "prop-types";
-import styles from "./MessageTextInput.module.css";
+import classNames from "classnames"
+import PropTypes from "prop-types"
+import styles from "./MessageTextInput.module.css"
 import Label from "../Label/Label"
 import TextInput from "../TextInput/TextInput"
 import Description from "../Description/Description"
@@ -12,6 +12,7 @@ const MessageTextInput = (
         value,
         onChange,
         name,
+        type,
         maxLength,
         required,
         className,
@@ -31,6 +32,7 @@ const MessageTextInput = (
                         required={required}
                         value={value}
                         name={name}
+                        type={type}
                         maxLength={maxLength}
                         onChange={onChange}
                         {...props}
@@ -39,8 +41,8 @@ const MessageTextInput = (
                 {errorMessage && <p className={styles["rule-field"]}>{errorMessage}</p>}
             </div>
         </div>
-    );
-};
+    )
+}
 
 MessageTextInput.propTypes = {
     label: PropTypes.string,
@@ -50,13 +52,13 @@ MessageTextInput.propTypes = {
     description: PropTypes.node,
     maxLength: PropTypes.number,
     errorMessage: PropTypes.string,
-};
+}
 
 MessageTextInput.defaultProps = {
     label: "",
     value: "",
     required: false,
     description: "",
-};
+}
 
-export default MessageTextInput;
+export default MessageTextInput
