@@ -3,6 +3,9 @@ import * as Api from "../../../api"
 import {useEffect, useState} from "react"
 import {PATH} from "../../../constants/path"
 import {generateQuery} from "../../../utils/query"
+import styles from "./BoardDetail.module.css"
+import Container from "../../@common/Container/Container"
+import ProductInfo from "../../@common/product-info/ProductInfo"
 
 const BoardDetail = () => {
     const query = new URLSearchParams(useLocation().search)
@@ -22,15 +25,19 @@ const BoardDetail = () => {
     )
 
     return (
-        <div>
-            {board ? (
-                <div>
+        <Container className={styles["board-detail-box"]}>
+            <div className={styles.box}>
+                {board && (
                     <div>
-                        <h1>{board.id} / {board.title} / {board.writerName}</h1>
-                        <h3>{board.content}</h3>
-                        {board.productInfo.name} <br/>
-                        {board.productInfo.price}원<br/>
-                        {board.productInfo.purchaseTime.year}년 {board.productInfo.purchaseTime.month}월 <br/>
+                        <div className={styles.title}>
+                            <h2>
+                                {board.id} / {board.title} / {board.writerName}
+                            </h2>
+                        </div>
+                        <div>{board.content}</div>
+                        <ProductInfo productInfo={board.productInfo}>
+
+                        </ProductInfo>
                         <Link
                             to={{
                                 pathname: PATH.BOARD_UPDATE,
@@ -39,11 +46,9 @@ const BoardDetail = () => {
                             <button>수정</button>
                         </Link>
                     </div>
-                </div>
-            ) : (
-                <div/>
-            )}
-        </div>
+                )}
+            </div>
+        </Container>
     )
 }
 

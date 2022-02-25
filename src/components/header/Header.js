@@ -21,7 +21,7 @@ const Header = () => {
     }
 
     return (
-        <div className={styles.content}>
+        <div className={styles.box}>
             <header className={styles.header}>
                 <div className={styles.content}>
                     <div className={styles.home}>

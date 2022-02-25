@@ -1,0 +1,13 @@
+.box {
+    display: flex;
+}
+
+.board-detail-box {
+    width: var(--pc-main-width);
+    margin: 7rem auto 0;
+}
+
+.title {
+    text-align: center;
+
+}

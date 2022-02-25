@@ -2,7 +2,7 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    width: var(--pc-main-width);
+    max-width: var(--pc-main-width);
     margin: 7rem auto 0;
 }
 

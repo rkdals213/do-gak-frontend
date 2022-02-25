@@ -41,6 +41,7 @@
 
 :root {
     --pc-main-width: 800px;
+    --pc-main-width-narrow: 512px;
 
     --header-z-index: 998;
     --nav-z-index: 997;
