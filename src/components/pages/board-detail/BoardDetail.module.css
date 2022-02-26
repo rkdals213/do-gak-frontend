@@ -7,7 +7,19 @@
     margin: 7rem auto 0;
 }
 
-.title {
-    text-align: center;
+.inner-box {
+    width: var(--pc-main-width2);
+    background: var(--white);
+    border: 1px solid var(--gray-003);
+    padding: 1.875rem 1.25rem;
+    background-color: var(--white);
+}
 
+.title {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.content {
+    margin-top: 1.25rem;
 }

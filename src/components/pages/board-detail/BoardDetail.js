@@ -5,18 +5,23 @@ import {PATH} from "../../../constants/path"
 import {generateQuery} from "../../../utils/query"
 import styles from "./BoardDetail.module.css"
 import Container from "../../@common/Container/Container"
-import ProductInfo from "../../@common/product-info/ProductInfo"
+import ProductInfo from "./ProductInfo"
+import Title from "./Title"
+import Button from "../../@common/button/Button"
+import Content from "./Content"
 
 const BoardDetail = () => {
     const query = new URLSearchParams(useLocation().search)
     const boardId = query.get("boardId")
 
     const [board, setBoard] = useState()
+    const [isWriter, setIsWriter] = useState(false)
 
     const getBoardDetail = async () => {
         const response = await Api.fetchBoardDetail(boardId)
 
         setBoard(response.data)
+        setIsWriter(response.data.isWriter)
     }
 
     useEffect(
@@ -29,22 +34,18 @@ const BoardDetail = () => {
             <div className={styles.box}>
                 {board && (
                     <div>
-                        <div className={styles.title}>
-                            <h2>
-                                {board.id} / {board.title} / {board.writerName}
-                            </h2>
-                        </div>
-                        <div>{board.content}</div>
-                        <ProductInfo productInfo={board.productInfo}>
-
-                        </ProductInfo>
-                        <Link
-                            to={{
-                                pathname: PATH.BOARD_UPDATE,
-                                search: generateQuery({boardId: board.id})
-                            }}>
-                            <button>수정</button>
-                        </Link>
+                        <Title board={board}/>
+                        <ProductInfo productInfo={board.productInfo}/>
+                        <Content content={board.content}/>
+                        {isWriter && (
+                            <Link
+                                to={{
+                                    pathname: PATH.BOARD_UPDATE,
+                                    search: generateQuery({boardId: board.id})
+                                }}>
+                                <Button>수정</Button>
+                            </Link>
+                        )}
                     </div>
                 )}
             </div>

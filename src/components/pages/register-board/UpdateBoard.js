@@ -51,9 +51,7 @@ const RegisterBoard = () => {
 
     return (
         <div className={styles.box}>
-            <RegisterForm handleSubmit={handleSubmit} boardForm={boardForm} handleChanges={handleChanges}>
-
-            </RegisterForm>
+            <RegisterForm handleSubmit={handleSubmit} boardForm={boardForm} handleChanges={handleChanges}/>
         </div>
     )
 }
