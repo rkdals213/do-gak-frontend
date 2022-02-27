@@ -41,7 +41,7 @@
 
 :root {
     --pc-main-width: 800px;
-    --pc-main-width2: 760px;
+    --pc-main-width-inner: 760px;
     --pc-main-width-narrow: 512px;
 
     --header-z-index: 998;
@@ -50,6 +50,10 @@
 
 a {
     text-decoration: none !important;
+}
+
+hr {
+    border: 1px solid var(--gray-003);
 }
 
 a:hover {

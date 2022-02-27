@@ -30,26 +30,24 @@ const BoardDetail = () => {
     )
 
     return (
-        <Container className={styles["board-detail-box"]}>
-            <div className={styles.box}>
-                {board && (
-                    <div>
-                        <Title board={board}/>
-                        <ProductInfo productInfo={board.productInfo}/>
-                        <Content content={board.content}/>
-                        {isWriter && (
-                            <Link
-                                to={{
-                                    pathname: PATH.BOARD_UPDATE,
-                                    search: generateQuery({boardId: board.id})
-                                }}>
-                                <Button>수정</Button>
-                            </Link>
-                        )}
-                    </div>
-                )}
-            </div>
-        </Container>
+        <>
+            {board && (
+                <Container className={styles["board-detail-box"]}>
+                    <Title board={board}/>
+                    <ProductInfo productInfo={board.productInfo}/>
+                    <Content content={board.content}/>
+                    {isWriter && (
+                        <Link
+                            to={{
+                                pathname: PATH.BOARD_UPDATE,
+                                search: generateQuery({boardId: board.id})
+                            }}>
+                            <Button>수정</Button>
+                        </Link>
+                    )}
+                </Container>
+            )}
+        </>
     )
 }
 

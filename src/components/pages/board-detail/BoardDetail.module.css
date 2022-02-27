@@ -1,18 +1,18 @@
 .box {
-    display: flex;
+    /*display: flex;*/
 }
 
 .board-detail-box {
-    width: var(--pc-main-width);
+    max-width: var(--pc-main-width);
     margin: 7rem auto 0;
 }
 
 .inner-box {
-    width: var(--pc-main-width2);
+    max-width: var(--pc-main-width-inner);
     background: var(--white);
     border: 1px solid var(--gray-003);
-    padding: 1.875rem 1.25rem;
     background-color: var(--white);
+    margin: 0 auto 0;
 }
 
 .title {
