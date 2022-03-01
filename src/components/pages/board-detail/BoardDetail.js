@@ -9,16 +9,18 @@ import ProductInfo from "./ProductInfo"
 import Title from "./Title"
 import Button from "../../@common/button/Button"
 import Content from "./Content"
+import useTokenContext from "../../../hooks/useTokenContext"
 
 const BoardDetail = () => {
     const query = new URLSearchParams(useLocation().search)
     const boardId = query.get("boardId")
 
+    const {token} = useTokenContext()
     const [board, setBoard] = useState()
     const [isWriter, setIsWriter] = useState(false)
 
     const getBoardDetail = async () => {
-        const response = await Api.fetchBoardDetail(boardId)
+        const response = await Api.fetchBoardDetail(token, boardId)
 
         setBoard(response.data)
         setIsWriter(response.data.isWriter)

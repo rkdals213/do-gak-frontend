@@ -13,8 +13,8 @@ export const fetchBoard = (page, category) =>
         }
     })
 
-export const fetchBoardDetail = (boardId) =>
-    axios.get(`${COMMON_PATH}/${boardId}`)
+export const fetchBoardDetail = (token, boardId) =>
+    axios.get(`${COMMON_PATH}/${boardId}`, headers({token}))
 
 export const registerBoard = (token, boardData) =>
     axios.post(`${COMMON_PATH}`, boardData, headers({token}))

@@ -18,7 +18,7 @@ const RegisterBoard = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const getBoardDetail = async () => {
-        const response = await Api.fetchBoardDetail(boardId)
+        const response = await Api.fetchBoardDetail(token, boardId)
 
         setBoardForm(response.data)
     }
