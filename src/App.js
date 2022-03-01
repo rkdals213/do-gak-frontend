@@ -6,7 +6,6 @@ import {AUTH_PATH, PATH} from "./constants/path"
 import Boards from "./components/pages/boards/Boards"
 import BoardDetail from "./components/pages/board-detail/BoardDetail"
 import KakaoCallback from "./components/header/KakaoCallback"
-import LoginCallback from "./components/header/LoginCallback"
 import React from "react"
 import ScrollToTop from "./components/scroll-to-top/ScrollToTop"
 import RegisterBoard from "./components/pages/register-board/RegisterBoard"
@@ -14,7 +13,6 @@ import UpdateBoard from "./components/pages/register-board/UpdateBoard"
 import PrivateRoute from "./components/privateRoute/PrivateRoute"
 
 function App() {
-
     return (
         <div>
             <TokenProvider>
@@ -25,9 +23,6 @@ function App() {
                             <Routes>
                                 <Route path={AUTH_PATH.KAKAO_CALLBACK} element={
                                     <KakaoCallback/>
-                                }/>
-                                <Route path={AUTH_PATH.LOGIN_CALLBACK} element={
-                                    <LoginCallback/>
                                 }/>
                                 <Route path={PATH.HOME} element={
                                     <Boards/>
