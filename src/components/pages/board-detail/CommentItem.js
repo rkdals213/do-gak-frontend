@@ -1,6 +1,7 @@
 import classNames from "classnames"
 import styles from "./BoardDetail.module.css"
 import Description from "../../@common/Description/Description"
+import Button from "../../@common/button/Button"
 
 const CommentItem = ({comment, className, ...props}) => {
     console.log(comment)
@@ -17,6 +18,9 @@ const CommentItem = ({comment, className, ...props}) => {
                 <div className={styles["comment-content"]}>
                     <span>{writerName}</span>
                     <span>{content}</span>
+                    {isWriter && (
+                        <Button>수정</Button>
+                    )}
                     <Description>등록일 : {createAt}</Description>
                     {createAt !== modifiedAt && (
                         <Description>수정일 : {modifiedAt}</Description>
