@@ -10,6 +10,7 @@ import Title from "./Title"
 import Button from "../../@common/button/Button"
 import Content from "./Content"
 import useTokenContext from "../../../hooks/useTokenContext"
+import CommentItem from "./CommentItem"
 
 const BoardDetail = () => {
     const query = new URLSearchParams(useLocation().search)
@@ -17,6 +18,7 @@ const BoardDetail = () => {
 
     const {token} = useTokenContext()
     const [board, setBoard] = useState()
+    const [comments, setComments] = useState([])
     const [isWriter, setIsWriter] = useState(false)
 
     const getBoardDetail = async () => {
@@ -26,29 +28,57 @@ const BoardDetail = () => {
         setIsWriter(response.data.isWriter)
     }
 
+    const getBoardComment = async () => {
+        const response = await Api.fetchCommentOfBoard(token, boardId)
+
+        setComments(response.data)
+        console.log(response)
+    }
+
     useEffect(
         getBoardDetail
         , []
     )
 
+    useEffect(
+        getBoardComment
+        , []
+    )
+
     return (
         <>
-            {board && (
-                <Container className={styles["board-detail-box"]}>
-                    <Title board={board}/>
-                    <ProductInfo productInfo={board.productInfo}/>
-                    <Content content={board.content}/>
-                    {isWriter && (
-                        <Link
-                            to={{
-                                pathname: PATH.BOARD_UPDATE,
-                                search: generateQuery({boardId: board.id})
-                            }}>
-                            <Button>수정</Button>
-                        </Link>
-                    )}
-                </Container>
-            )}
+            <div>
+                {board && (
+                    <Container className={styles["board-detail-box"]}>
+                        <Title board={board}/>
+                        <ProductInfo productInfo={board.productInfo}/>
+                        <Content content={board.content}/>
+                        {isWriter && (
+                            <Link
+                                to={{
+                                    pathname: PATH.BOARD_UPDATE,
+                                    search: generateQuery({boardId: board.id})
+                                }}>
+                                <Button>수정</Button>
+                            </Link>
+                        )}
+                    </Container>
+                )}
+            </div>
+            <div>
+                {comments && (
+                    <Container className={styles["comment-box"]}>
+                        <div className={styles["comment-list"]}>
+                            {comments.map((comment) => (
+                                <CommentItem
+                                    key={comment.id}
+                                    comment={comment}
+                                />
+                            ))}
+                        </div>
+                    </Container>
+                )}
+            </div>
         </>
     )
 }
