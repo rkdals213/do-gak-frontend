@@ -32,7 +32,6 @@ const BoardDetail = () => {
         const response = await Api.fetchCommentOfBoard(token, boardId)
 
         setComments(response.data)
-        console.log(response)
     }
 
     useEffect(

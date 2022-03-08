@@ -4,7 +4,6 @@ import Description from "../../@common/Description/Description"
 import Button from "../../@common/button/Button"
 
 const CommentItem = ({comment, className, ...props}) => {
-    console.log(comment)
     const id = comment.id
     const content = comment.content
     const writerId = comment.writerId
