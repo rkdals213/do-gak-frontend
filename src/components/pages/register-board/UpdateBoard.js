@@ -5,7 +5,7 @@ import {useLocation, useNavigate} from "react-router-dom"
 import {PATH} from "../../../constants/path"
 import {generateQuery} from "../../../utils/query"
 import {useEffect} from "react"
-import RegisterForm from "./RegisterForm"
+import RegisterBoardForm from "./RegisterBoardForm"
 import styles from "./BoardForms.module.css"
 
 const RegisterBoard = () => {
@@ -51,7 +51,7 @@ const RegisterBoard = () => {
 
     return (
         <div className={styles.box}>
-            <RegisterForm handleSubmit={handleSubmit} boardForm={boardForm} handleChanges={handleChanges}/>
+            <RegisterBoardForm handleSubmit={handleSubmit} boardForm={boardForm} handleChanges={handleChanges}/>
         </div>
     )
 }

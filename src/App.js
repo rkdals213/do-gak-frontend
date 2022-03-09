@@ -11,44 +11,47 @@ import ScrollToTop from "./components/scroll-to-top/ScrollToTop"
 import RegisterBoard from "./components/pages/register-board/RegisterBoard"
 import UpdateBoard from "./components/pages/register-board/UpdateBoard"
 import PrivateRoute from "./components/privateRoute/PrivateRoute"
+import BeforeLoginPageProvider from "./provider/BeforeLoginPageProvider"
 
 function App() {
     return (
         <div>
-            <TokenProvider>
-                <BrowserRouter>
-                    <Header/>
-                    <main className={"main"}>
-                        <ScrollToTop>
-                            <Routes>
-                                <Route path={AUTH_PATH.KAKAO_CALLBACK} element={
-                                    <KakaoCallback/>
-                                }/>
-                                <Route path={PATH.HOME} element={
-                                    <Boards/>
-                                }/>
-                                <Route path={PATH.BOARD} element={
-                                    <Boards/>
-                                }/>
-                                <Route path={PATH.BOARD_DETAIL} element={
-                                    <BoardDetail/>
-                                }/>
+            <BeforeLoginPageProvider>≈
+                <TokenProvider>
+                    <BrowserRouter>
+                        <Header/>
+                        <main className={"main"}>
+                            <ScrollToTop>
+                                <Routes>
+                                    <Route path={AUTH_PATH.KAKAO_CALLBACK} element={
+                                        <KakaoCallback/>
+                                    }/>
+                                    <Route path={PATH.HOME} element={
+                                        <Boards/>
+                                    }/>
+                                    <Route path={PATH.BOARD} element={
+                                        <Boards/>
+                                    }/>
+                                    <Route path={PATH.BOARD_DETAIL} element={
+                                        <BoardDetail/>
+                                    }/>
 
-                                <Route path={PATH.BOARD_REGISTER} element={
-                                    <PrivateRoute>
-                                        <RegisterBoard/>
-                                    </PrivateRoute>
-                                }/>
-                                <Route path={PATH.BOARD_UPDATE} element={
-                                    <PrivateRoute>
-                                        <UpdateBoard/>
-                                    </PrivateRoute>
-                                }/>
-                            </Routes>
-                        </ScrollToTop>
-                    </main>
-                </BrowserRouter>
-            </TokenProvider>
+                                    <Route path={PATH.BOARD_REGISTER} element={
+                                        <PrivateRoute>
+                                            <RegisterBoard/>
+                                        </PrivateRoute>
+                                    }/>
+                                    <Route path={PATH.BOARD_UPDATE} element={
+                                        <PrivateRoute>
+                                            <UpdateBoard/>
+                                        </PrivateRoute>
+                                    }/>
+                                </Routes>
+                            </ScrollToTop>
+                        </main>
+                    </BrowserRouter>
+                </TokenProvider>
+            </BeforeLoginPageProvider>
         </div>
     )
 }

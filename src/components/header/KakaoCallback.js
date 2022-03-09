@@ -2,8 +2,8 @@ import React, {useEffect} from "react"
 import axios from "axios"
 import qs from "qs"
 import {useNavigate} from "react-router-dom"
-import {PATH} from "../../constants/path"
 import useAuth from "../../hooks/useAuth"
+import useBeforeLoginPageContext from "../../hooks/useBeforeLoginPageContext"
 
 const KakaoCallback = () => {
     const REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY
@@ -14,7 +14,8 @@ const KakaoCallback = () => {
     const code = new URL(window.location.href).searchParams.get("code")
 
     const navigate = useNavigate()
-    const { login } = useAuth()
+    const {beforeLoginPage} = useBeforeLoginPageContext()
+    const {login} = useAuth()
 
     const getToken = async () => {
         const payload = qs.stringify({
@@ -35,7 +36,7 @@ const KakaoCallback = () => {
                 "accessToken": res.data.access_token
             })
 
-            navigate(PATH.HOME)
+            navigate(beforeLoginPage)
         } catch (err) {
             console.log(err)
         }

@@ -8,8 +8,8 @@ const TokenProvider = ({children}) => {
     )
 
     const resetToken = () => {
-        setToken("");
-        localStorage.setItem(LOCAL_STORAGE_KEY.ACCESS_TOKEN, "");
+        setToken("")
+        localStorage.setItem(LOCAL_STORAGE_KEY.ACCESS_TOKEN, "")
     }
 
     return (

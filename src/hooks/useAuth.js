@@ -1,5 +1,5 @@
 import useTokenContext from "./useTokenContext"
-import { LOCAL_STORAGE_KEY } from "../constants/key";
+import {LOCAL_STORAGE_KEY} from "../constants/key";
 import * as Api from "../api"
 
 const useAuth = () => {
@@ -13,6 +13,6 @@ const useAuth = () => {
     }
 
     return { login }
-};
+}
 
 export default useAuth

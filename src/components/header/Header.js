@@ -1,23 +1,25 @@
 import React from "react"
-import {Link, useNavigate} from "react-router-dom"
+import {Link} from "react-router-dom"
 import useTokenContext from "../../hooks/useTokenContext"
 import {PATH, URL} from "../../constants/path"
 import Button from "../@common/button/Button"
 import styles from "./Header.module.css"
 import headerLogo from "../../assets/Header.jpeg"
+import useBeforeLoginPageContext from "../../hooks/useBeforeLoginPageContext"
 
 const Header = () => {
     const {token, resetToken} = useTokenContext()
+    const {setRedirectPage} = useBeforeLoginPageContext()
 
-    const navigate = useNavigate()
-
-    const onLogin = () => {
+    const onLogin = async () => {
+        const page = window.location.pathname + window.location.search
+        setRedirectPage(page)
         window.location.replace(URL.KAKAO_AUTH_URL)
     }
 
     const onLogout = () => {
         resetToken()
-        navigate(PATH.HOME)
+        window.location.reload()
     }
 
     return (

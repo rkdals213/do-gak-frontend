@@ -3,10 +3,8 @@ import MessageTextInput from "../../@common/MessageTextInput/MessageTextInput"
 import {REGISTER_BOARD_FORM, REGISTER_PRODUCT_FORM, REGISTER_PURCHASE_TIME} from "../../../hooks/useRegisterBoardForm"
 import MessageTextarea from "../../@common/MessageTextarea/MessageTextarea"
 import Button from "../../@common/button/Button"
-import Label from "../../@common/Label/Label"
-import styles from "./BoardForms.module.css"
 
-const RegisterForm = ({handleSubmit, boardForm, handleChanges}) => {
+const RegisterBoardForm = ({handleSubmit, boardForm, handleChanges}) => {
     return (
         <Form onSubmit={handleSubmit}>
             <MessageTextInput
@@ -74,4 +72,4 @@ const RegisterForm = ({handleSubmit, boardForm, handleChanges}) => {
     )
 }
 
-export default RegisterForm
+export default RegisterBoardForm

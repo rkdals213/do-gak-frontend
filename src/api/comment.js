@@ -7,7 +7,7 @@ const COMMON_PATH = backendUrl + "/comment"
 export const fetchCommentOfBoard = (token, boardId) =>
     axios.get(`${COMMON_PATH}/board/${boardId}`, headers({token}))
 
-export const postComment = (token, boardId, commentData) =>
+export const registerComment = (token, boardId, commentData) =>
     axios.post(`${COMMON_PATH}/board/${boardId}`, commentData, headers({token}))
 
 export const updateComment = (token, commentId, commentData) =>

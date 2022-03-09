@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom"
 import {PATH} from "../../../constants/path"
 import {generateQuery} from "../../../utils/query"
 import styles from "./BoardForms.module.css"
-import RegisterForm from "./RegisterForm"
+import RegisterBoardForm from "./RegisterBoardForm"
 
 const RegisterBoard = () => {
     const {token} = useTokenContext()
@@ -13,18 +13,14 @@ const RegisterBoard = () => {
     const navigate = useNavigate()
 
     const registerBoard = async (form) => {
-        try {
-            await Api.registerBoard(token, form).then((response) => {
-                navigate({
-                    pathname: PATH.BOARD_DETAIL,
-                    search: generateQuery({boardId: response.data})
-                }, {
-                    replace: true
-                })
+        await Api.registerBoard(token, form).then((response) => {
+            navigate({
+                pathname: PATH.BOARD_DETAIL,
+                search: generateQuery({boardId: response.data})
+            }, {
+                replace: true
             })
-        } catch (err) {
-            console.log(err)
-        }
+        })
     }
 
     const handleSubmit = (event) => {
@@ -35,7 +31,11 @@ const RegisterBoard = () => {
 
     return (
         <div className={styles.box}>
-            <RegisterForm handleSubmit={handleSubmit} boardForm={boardForm} handleChanges={handleChanges}/>
+            <RegisterBoardForm
+                handleSubmit={handleSubmit}
+                boardForm={boardForm}
+                handleChanges={handleChanges}
+            />
         </div>
     )
 }

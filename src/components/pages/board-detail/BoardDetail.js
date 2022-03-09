@@ -1,4 +1,4 @@
-import {Link, useLocation, useNavigate} from "react-router-dom"
+import {Link, useLocation} from "react-router-dom"
 import * as Api from "../../../api"
 import {useEffect, useState} from "react"
 import {PATH} from "../../../constants/path"
@@ -11,6 +11,7 @@ import Button from "../../@common/button/Button"
 import Content from "./Content"
 import useTokenContext from "../../../hooks/useTokenContext"
 import CommentItem from "./CommentItem"
+import RegisterCommentForm from "./RegisterCommentForm"
 
 const BoardDetail = () => {
     const query = new URLSearchParams(useLocation().search)
@@ -20,6 +21,7 @@ const BoardDetail = () => {
     const [board, setBoard] = useState()
     const [comments, setComments] = useState([])
     const [isWriter, setIsWriter] = useState(false)
+    const [writeComment, setWriteComment] = useState("")
 
     const getBoardDetail = async () => {
         const response = await Api.fetchBoardDetail(token, boardId)
@@ -32,6 +34,24 @@ const BoardDetail = () => {
         const response = await Api.fetchCommentOfBoard(token, boardId)
 
         setComments(response.data)
+    }
+
+    const registerComment = async () => {
+        await Api.registerComment(token, boardId, {
+            comment: writeComment
+        }).then(() => {
+            window.location.reload()
+        })
+    }
+
+    const handleCommentChange = ({target}) => {
+        setWriteComment(target.value)
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+
+        registerComment(writeComment)
     }
 
     useEffect(
@@ -74,6 +94,13 @@ const BoardDetail = () => {
                                     comment={comment}
                                 />
                             ))}
+                            {token && (
+                                <RegisterCommentForm
+                                    handleSubmit={handleSubmit}
+                                    writeComment={writeComment}
+                                    handleCommentChange={handleCommentChange}
+                                />
+                            )}
                         </div>
                     </Container>
                 )}
