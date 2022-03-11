@@ -17,14 +17,14 @@ const CommentItem = ({comment, className, ...props}) => {
     const modifiedAt = comment.modifiedAt
 
     const [update, setUpdate] = useState(false)
-    const [writeComment, setWriteComment] = useState("")
+    const [writeComment, setWriteComment] = useState(content)
     const {token} = useTokenContext()
 
     const handleUpdateButton = () => {
         setUpdate(!update)
     }
 
-    const registerComment = async () => {
+    const updateComment = async () => {
         await Api.updateComment(token, id, {
             comment: writeComment
         }).then(() => {
@@ -39,22 +39,20 @@ const CommentItem = ({comment, className, ...props}) => {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        registerComment(writeComment)
+        updateComment(writeComment)
     }
 
     return (
         <div className={classNames(styles["content-wrapper"], className)} {...props}>
             <div className={styles["text-container"]}>
                 <div className={styles["comment-content"]}>
-                    <span>{writerName}</span>
-                    <span>{content}</span>
+                    <div>{writerName}</div>
+                    <div>{content}</div>
                     {isWriter && (
                         <Button onClick={handleUpdateButton}>수정</Button>
                     )}
                     <Description>등록일 : {createAt}</Description>
-                    {createAt !== modifiedAt && (
-                        <Description>수정일 : {modifiedAt}</Description>
-                    )}
+                    <Description>수정일 : {modifiedAt}</Description>
                 </div>
                 {update && (
                     <RegisterCommentForm

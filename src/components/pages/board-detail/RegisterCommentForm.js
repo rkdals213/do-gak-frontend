@@ -1,11 +1,11 @@
 import Form from "../../form/Form/Form"
-import MessageTextInput from "../../@common/MessageTextInput/MessageTextInput"
 import Button from "../../@common/button/Button"
+import MessageTextarea from "../../@common/MessageTextarea/MessageTextarea"
 
 const RegisterCommentForm = ({handleSubmit, writeComment, handleCommentChange}) => {
     return (
         <Form onSubmit={handleSubmit}>
-            <MessageTextInput
+            <MessageTextarea
                 name={"comment"}
                 type={"text"}
                 value={writeComment}
