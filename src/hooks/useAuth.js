@@ -6,7 +6,7 @@ const useAuth = () => {
     const { setToken } = useTokenContext()
 
     const login = async (payload) => {
-        const { data: token } = await Api.fetchLogin(payload)
+        const { data: token } = await Api.login(payload)
 
         setToken(token)
         localStorage.setItem(LOCAL_STORAGE_KEY.ACCESS_TOKEN, token)

@@ -1,0 +1,4 @@
+.my-page-box {
+    max-width: var(--pc-main-width);
+    margin: 7rem auto 0;
+}

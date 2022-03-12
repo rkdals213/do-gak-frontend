@@ -12,11 +12,12 @@ import RegisterBoard from "./components/pages/register-board/RegisterBoard"
 import UpdateBoard from "./components/pages/register-board/UpdateBoard"
 import PrivateRoute from "./components/privateRoute/PrivateRoute"
 import BeforeLoginPageProvider from "./provider/BeforeLoginPageProvider"
+import MyPage from "./components/pages/mypage/MyPage"
 
 function App() {
     return (
         <div>
-            <BeforeLoginPageProvider>≈
+            <BeforeLoginPageProvider>
                 <TokenProvider>
                     <BrowserRouter>
                         <Header/>
@@ -44,6 +45,11 @@ function App() {
                                     <Route path={PATH.BOARD_UPDATE} element={
                                         <PrivateRoute>
                                             <UpdateBoard/>
+                                        </PrivateRoute>
+                                    }/>
+                                    <Route path={PATH.MY_PAGE} element={
+                                        <PrivateRoute>
+                                            <MyPage/>
                                         </PrivateRoute>
                                     }/>
                                 </Routes>

@@ -3,7 +3,8 @@ const PATH = {
     BOARD: "/board",
     BOARD_DETAIL: "/boardDetail",
     BOARD_REGISTER: "/boardRegister",
-    BOARD_UPDATE: "/boardUpdate"
+    BOARD_UPDATE: "/boardUpdate",
+    MY_PAGE: "/myPage"
 }
 
 const AUTH_PATH = {

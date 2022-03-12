@@ -1,5 +1,5 @@
 import React from "react"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import useTokenContext from "../../hooks/useTokenContext"
 import {PATH, URL} from "../../constants/path"
 import Button from "../@common/button/Button"
@@ -10,6 +10,7 @@ import useBeforeLoginPageContext from "../../hooks/useBeforeLoginPageContext"
 const Header = () => {
     const {token, resetToken} = useTokenContext()
     const {setRedirectPage} = useBeforeLoginPageContext()
+    const navigate = useNavigate()
 
     const onLogin = async () => {
         const page = window.location.pathname + window.location.search
@@ -20,6 +21,10 @@ const Header = () => {
     const onLogout = () => {
         resetToken()
         window.location.reload()
+    }
+
+    const toMyPage = () => {
+        navigate(PATH.MY_PAGE)
     }
 
     return (
@@ -41,6 +46,7 @@ const Header = () => {
                     <div className={styles["link-container"]}>
                         {token ? (
                             <div className={styles["member-menu-container"]}>
+                                <Button className={styles.button} onClick={toMyPage}>MyPage</Button>
                                 <Button className={styles.button} onClick={onLogout}>Logout</Button>
                             </div>
                         ) : (

@@ -24,7 +24,7 @@ const TextInput = ({className, type, readOnly, value, maxLength, onChange, ...pr
             value={value}
             className={classNames(styles["text-input"], className)}
             readOnly={readOnly}
-            onKeyDown={handleWhiteSpace}
+            // onKeyDown={handleWhiteSpace}
             onChange={handleChange}
             {...props}
         />
