@@ -45,7 +45,7 @@ const CommentItem = ({comment, className, ...props}) => {
     return (
         <div className={classNames(styles["content-wrapper"], className)} {...props}>
             <div className={styles["text-container"]}>
-                <div className={styles["comment-content"]}>
+                <div className={styles['comment-content']}>
                     <div>{writerName}</div>
                     <div>{content}</div>
                     {isWriter && (

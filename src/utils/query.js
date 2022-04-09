@@ -1,5 +1,5 @@
 export const generateQuery = (queryObj) => {
-    const queryKeys = Object.keys(queryObj)
+  const queryKeys = Object.keys(queryObj)
 
-    return `?${queryKeys.map((key) => `${key}=${queryObj[key]}`).join("&")}`
+  return `?${queryKeys.map((key) => `${key}=${queryObj[key]}`).join('&')}`
 }
